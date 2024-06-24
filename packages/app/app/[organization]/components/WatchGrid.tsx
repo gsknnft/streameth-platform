@@ -2,7 +2,7 @@ import { fetchAllSessions } from '@/lib/data'
 import Link from 'next/link'
 import VideoCardSkeleton from '@/components/misc/VideoCard/VideoCardSkeleton'
 import Videos from '@/components/misc/Videos'
-import { Video } from 'lucide-react'
+import { LuVideo } from 'react-icons/lu'
 
 const WatchGrid = async ({
   organizationSlug,
@@ -39,7 +39,7 @@ const WatchGrid = async ({
       />
       {videos.length === 0 && (
         <div className="flex flex-row justify-center items-center p-4 space-x-4 rounded-xl bg-secondary">
-          <Video size={20} />
+          <LuVideo size={20} />
           <p>No videos uploaded</p>
         </div>
       )}

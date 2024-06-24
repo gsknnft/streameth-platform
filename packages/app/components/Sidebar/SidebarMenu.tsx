@@ -2,20 +2,19 @@
 
 import { SidebarUI, SidebarItem } from './Sidebar'
 import {
-  CalendarDays,
-  Videotape,
-  Radio,
-  ScissorsLineDashed,
-  Home,
-  ImageIcon,
-  Settings,
-} from 'lucide-react'
+  LuVideotape,
+  LuRadio,
+  LuScissorsLineDashed,
+  LuHome,
+  LuImage,
+  LuSettings,
+} from 'react-icons/lu'
 
 const navigationItems = [
   {
     text: 'Home',
     navigationPath: '',
-    icon: <Home size={20} />,
+    icon: <LuHome size={20} />,
   },
   // {
   //   text: 'Events',
@@ -25,27 +24,27 @@ const navigationItems = [
   {
     text: 'Library',
     navigationPath: '/library',
-    icon: <Videotape size={20} />,
+    icon: <LuVideotape size={20} />,
   },
   {
     text: 'Livestreams',
     navigationPath: '/livestreams',
-    icon: <Radio size={20} />,
+    icon: <LuRadio size={20} />,
   },
   {
     text: 'Clips',
     navigationPath: '/clips',
-    icon: <ScissorsLineDashed size={20} />,
+    icon: <LuScissorsLineDashed size={20} />,
   },
   {
     text: 'Mint NFT',
     navigationPath: '/nfts',
-    icon: <ImageIcon size={20} />,
+    icon: <LuImage size={20} />,
   },
   {
-    text: 'Settings',
+    text: 'LuSettings',
     navigationPath: '/settings',
-    icon: <Settings />,
+    icon: <LuSettings />,
   },
 ]
 

@@ -13,7 +13,7 @@ import {
 import { fetchAllSessions } from '@/lib/data'
 import { fetchEvent } from '@/lib/services/eventService'
 import { CardTitle } from '@/components/ui/card'
-import { Film } from 'lucide-react'
+import { LuFilm } from 'react-icons/lu'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Preview from '../Preview'
@@ -42,7 +42,7 @@ const ClipContainer = ({
 )
 
 const SkeletonSidebar = () => (
-  <div className="w-1/3 flex flex-col h-full bg-background bg-white border-l">
+  <div className="flex flex-col w-1/3 h-full bg-white border-l bg-background">
     <div className="h-[calc(100%-50px)] overflow-y-clip space-y-4">
       {[1, 2, 3, 4, 5].map((i) => (
         <div key={i} className="p-4 animate-pulse">
@@ -68,8 +68,8 @@ const SessionSidebar = async ({
   }
 }) => {
   return (
-    <div className="w-[300px] h-full bg-background bg-white border-l">
-      <CardTitle className="bg-white p-2 border-b text-lg">
+    <div className="h-full bg-white border-l w-[300px] bg-background">
+      <CardTitle className="p-2 text-lg bg-white border-b">
         <RecordingSelect
           selectedRecording={currentRecording ?? undefined}
           streamRecordings={recordings.recordings}
@@ -104,7 +104,7 @@ const EventClips = async ({
       <ClipContainer>
         <div className="flex flex-col items-center p-4 mx-auto mb-auto space-y-4 w-full h-auto max-w-[500px]">
           <div className="flex flex-col justify-center items-center p-4 mx-auto mb-auto space-y-4 w-full h-full text-center bg-white rounded-lg border max-w-[500px] bg-background">
-            <Film className="p-4 rounded-lg" size={84} />
+            <LuFilm className="p-4 rounded-lg" size={84} />
             <p className="text-lg font-bold">Clip a livestream!</p>
             <p className="text-sm text-foreground-muted">
               You dont have any stages to clip from, first create a
@@ -129,7 +129,7 @@ const EventClips = async ({
         <div className="flex flex-col items-center p-4 mx-auto mb-auto space-y-4 w-full h-auto max-w-[500px]">
           <SelectSession stages={stages} currentStageId={stage} />
           <div className="flex flex-col justify-center items-center p-4 mx-auto space-y-2 w-full h-full text-center bg-white rounded-lg border bg-background">
-            <Film className="p-4 rounded-lg" size={84} />
+            <LuFilm className="p-4 rounded-lg" size={84} />
             <p className="text-lg font-bold">Clip a livestream!</p>
             <p className="text-sm text-foreground-muted">
               Please select a livestream that has a recordings from
@@ -149,7 +149,7 @@ const EventClips = async ({
     streamId: currentStage?.streamSettings?.streamId ?? '',
   })
 
-  const currentRecording = (function () {
+  const currentRecording = (function() {
     if (selectedRecording) {
       const recording = stageRecordings?.recordings.find(
         (recording) => recording?.id === selectedRecording
@@ -171,7 +171,7 @@ const EventClips = async ({
         <div className="flex flex-col p-4 mx-auto mb-auto space-y-4 w-full max-w-[500px]">
           <SelectSession stages={stages} currentStageId={stage} />
           <div className="flex flex-col justify-center items-center p-8 mx-auto space-y-2 w-full h-full text-center bg-white rounded-lg border bg-background">
-            <Film className="p-4 rounded-lg" size={84} />
+            <LuFilm className="p-4 rounded-lg" size={84} />
             <p className="text-lg font-bold">No recordings</p>
             <p className="text-sm text-foreground-muted">
               This stream does not have any recordings, go live and
@@ -195,7 +195,7 @@ const EventClips = async ({
             streamRecordings={stageRecordings.recordings}
           />
           <div className="flex flex-col justify-center items-center p-4 mx-auto space-y-2 w-full h-full text-center bg-white rounded-lg border bg-background">
-            <Film className="p-4 rounded-lg" size={84} />
+            <LuFilm className="p-4 rounded-lg" size={84} />
             <p className="text-lg font-bold">Clip a livestream!</p>
             <p className="text-sm text-foreground-muted">
               Please select a livestream recording from the dropdown
@@ -215,7 +215,7 @@ const EventClips = async ({
     stageId: currentStage._id,
   })
 
-  const previewAsset = await (async function () {
+  const previewAsset = await (async function() {
     if (previewId) {
       const session = await fetchSession({
         session: previewId,
@@ -241,7 +241,7 @@ const EventClips = async ({
         />
       )}
       <div className="flex flex-col w-full">
-        <div className="flex flex-col w-full h-full overflow-auto space-y-4 p-4 bg-white">
+        <div className="flex overflow-auto flex-col p-4 space-y-4 w-full h-full bg-white">
           <ClipProvider>
             <ReactHlsPlayer
               playbackId={

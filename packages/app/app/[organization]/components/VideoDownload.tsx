@@ -1,5 +1,5 @@
 import { Livepeer } from 'livepeer'
-import { ArrowDownToLine, Download } from 'lucide-react'
+import { LuDownload } from 'react-icons/lu'
 import { Button } from '@/components/ui/button'
 
 const VideoDownload = async ({ assetId }: { assetId: string }) => {
@@ -20,8 +20,8 @@ const VideoDownload = async ({ assetId }: { assetId: string }) => {
       target="_blank"
       className="flex justify-center items-center">
       <Button className="bg-white" variant="outline">
-        <Download size={24} className="p-1 cursor-pointer" />
-        Download
+        <LuDownload size={24} className="p-1 cursor-pointer" />
+        LuDownload
       </Button>
     </a>
   )

@@ -9,7 +9,7 @@ import {
 import VideoDownload from '@/app/[organization]/components/VideoDownload'
 import ShareButton from '@/components/misc/interact/ShareButton'
 import EmbedButton from '@/components/misc/interact/EmbedButton'
-import { MoreHorizontal } from 'lucide-react'
+import { LuMoreHorizontal } from 'react-icons/lu'
 export function DropdownMenuWithActionButtons({
   streamId,
   playbackId,
@@ -24,7 +24,7 @@ export function DropdownMenuWithActionButtons({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <MoreHorizontal className="flex p-2 w-10 h-10 rounded-full border md:hidden" />
+        <LuMoreHorizontal className="flex p-2 w-10 h-10 rounded-full border md:hidden" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-white border-none">
         <DropdownMenuGroup>

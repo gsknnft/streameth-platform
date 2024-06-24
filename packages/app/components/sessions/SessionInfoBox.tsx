@@ -13,13 +13,12 @@ import { formatDate } from '@/lib/utils/time'
 import ViewCounts from '@/app/[organization]/components/ViewCounts'
 import CalendarReminder from '@/app/[organization]/livestream/components/CalendarReminder'
 import { IExtendedSpeaker } from '@/lib/types'
-import VideoDownload from '@/app/[organization]/components/VideoDownload'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '../ui/popover'
-import { EllipsisVertical } from 'lucide-react'
+import { IoEllipsisVertical } from 'react-icons/io5'
 import VideoDownloadClient from '../misc/VideoDownloadClient'
 
 const DesktopButtons = ({
@@ -94,7 +93,7 @@ const MobileButtons = ({
           </div>
           <Popover>
             <PopoverTrigger asChild>
-              <EllipsisVertical
+              <IoEllipsisVertical
                 size={30}
                 className="cursor-pointer"
               />
@@ -157,9 +156,8 @@ const SessionInfoBox = async ({
 
   return (
     <div
-      className={`flex flex-col md:flex-row py-4 md:space-x-2 ${
-        inverted ? 'text-white rounded-lg  text-card-foreground ' : ''
-      }`}>
+      className={`flex flex-col md:flex-row py-4 md:space-x-2 ${inverted ? 'text-white rounded-lg  text-card-foreground ' : ''
+        }`}>
       <div className="flex flex-col justify-start w-full">
         <CardTitle className="flex flex-row justify-between items-start text-xl lg:text-2xl">
           <span>{name}</span>

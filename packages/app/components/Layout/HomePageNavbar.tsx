@@ -4,10 +4,9 @@ import Image from 'next/image'
 import SearchBar from '@/components/misc/SearchBar'
 import Link from 'next/link'
 import { NavigationMenu } from '@/components/ui/navigation-menu'
-import { Menu, X } from 'lucide-react'
+import { LuMenu, LuX, LuSearch } from 'react-icons/lu'
 import Navbar from './Navbar'
 import { SignInUserButton } from '../misc/SignInUserButton'
-import { Search } from 'lucide-react'
 import { Page } from '@/lib/types'
 import SwitchOrganization from '@/app/studio/[organization]/components/SwitchOrganization'
 import { IExtendedOrganization } from '@/lib/types'
@@ -84,7 +83,7 @@ const MobileNavBar = ({
   }, [menuVisible, searchVisible])
 
   return (
-    <NavigationMenu className="flex sticky top-0 flex-row items-center bg-white lg:hidden z-50">
+    <NavigationMenu className="flex sticky top-0 z-50 flex-row items-center bg-white lg:hidden">
       {(searchVisible || menuVisible) && (
         <div className="absolute top-0 left-0 bg-black bg-opacity-50 h-[100vh] w-[100vw]" />
       )}
@@ -127,18 +126,18 @@ const MobileNavBar = ({
           {showSearchBar && (
             <button onClick={toggleSearch} className="p-2">
               {searchVisible ? (
-                <X className="w-6 h-6 text-primary" />
+                <LuX className="w-6 h-6 text-primary" />
               ) : (
-                <Search className="w-6 h-6 text-primary" />
+                <LuSearch className="w-6 h-6 text-primary" />
               )}
             </button>
           )}
           {pages.length > 0 && (
             <button onClick={toggleMenu} className="z-50">
               {!menuVisible ? (
-                <Menu size={30} strokeWidth={2} className="" />
+                <LuMenu size={30} strokeWidth={2} className="" />
               ) : (
-                <X size={30} strokeWidth={2} className="" />
+                <LuX size={30} strokeWidth={2} className="" />
               )}
             </button>
           )}

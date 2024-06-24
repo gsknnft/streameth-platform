@@ -2,7 +2,7 @@ import { fetchStages } from '@/lib/services/stageService'
 import LivestreamCard from '@/components/misc/VideoCard/LivestreamCard'
 import React from 'react'
 import { VideoCardSkeletonMobile } from '@/components/misc/VideoCard/VideoCardSkeleton'
-import { Podcast } from 'lucide-react'
+import { LuPodcast } from 'react-icons/lu'
 
 const UpcomingStreams = async ({
   organizationId,
@@ -47,8 +47,8 @@ const UpcomingStreams = async ({
         ))}
       </div>
       {livestreams.length === 0 && (
-        <div className="space-x-4 flex flex-row justify-center items-center bg-secondary rounded-xl p-4">
-          <Podcast size={20} />
+        <div className="flex flex-row justify-center items-center p-4 space-x-4 rounded-xl bg-secondary">
+          <LuPodcast size={20} />
           <p>No scheduled livestreams</p>
         </div>
       )}

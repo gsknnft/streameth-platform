@@ -21,7 +21,7 @@ import {
   createOrganizationAction,
   updateOrganizationAction,
 } from '@/lib/actions/organizations'
-import { Loader2 } from 'lucide-react'
+import { LuLoader2 } from 'react-icons/lu'
 import ImageUpload from '@/components/misc/form/imageUpload'
 import { useRouter } from 'next/navigation'
 import { IExtendedOrganization } from '@/lib/types'
@@ -91,7 +91,7 @@ export default function CreateOrganizationForm({
   return (
     <Form {...form}>
       <form
-        onError={(errors) => {}}
+        onError={(errors) => { }}
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-4">
         <div>
@@ -215,7 +215,7 @@ export default function CreateOrganizationForm({
             variant={'primary'}>
             {isLoading ? (
               <>
-                <Loader2 className="mr-2 w-4 h-4 animate-spin" />{' '}
+                <LuLoader2 className="mr-2 w-4 h-4 animate-spin" />
                 Please wait
               </>
             ) : organization ? (

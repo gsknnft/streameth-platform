@@ -1,7 +1,7 @@
 'use client'
 
 import { toast } from 'sonner'
-import { Copy } from 'lucide-react'
+import { LuCopy } from 'react-icons/lu'
 
 const CopyItem = ({
   item,
@@ -20,7 +20,7 @@ const CopyItem = ({
       className="flex items-center cursor-pointer hover:bg-gray-200 group"
       onClick={handleCopy}>
       <span className="m-2 truncate">{item}</span>
-      <Copy className="p-1 mr-2 opacity-0 group-hover:opacity-100" />
+      <LuCopy className="p-1 mr-2 opacity-0 group-hover:opacity-100" />
     </div>
   )
 }

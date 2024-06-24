@@ -1,6 +1,6 @@
 import { fetchAllSessions } from '@/lib/data'
 import Videos from '@/components/misc/Videos'
-import { FileQuestion } from 'lucide-react'
+import { LuFileQuestion } from 'react-icons/lu'
 import Pagination from './pagination'
 
 const ArchiveVideos = async ({
@@ -26,8 +26,8 @@ const ArchiveVideos = async ({
 
   if (videos.pagination.totalItems === 0) {
     return (
-      <div className="flex flex-col justify-center items-center h-full w-full mt-10">
-        <FileQuestion size={65} />
+      <div className="flex flex-col justify-center items-center mt-10 w-full h-full">
+        <LuFileQuestion size={65} />
         <span className="mt-2 text-xl bolt">
           No videos have been found
         </span>
