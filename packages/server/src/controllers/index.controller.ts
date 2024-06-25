@@ -91,7 +91,7 @@ export class IndexController extends Controller {
     });
 
     if (!session) {
-      return SendApiResponse('No session found', null, '400');
+      throw new Error('No session found');
     }
     const ipfs = await uploadToIpfs(id);
     await this.sessionService.update(session._id.toString(), {
@@ -105,12 +105,12 @@ export class IndexController extends Controller {
     });
 
     if (!state || state.length === 0) {
-      return SendApiResponse('No state found', null, '400');
+      throw new Error('No state found');
     }
     await this.stateService.update(state[0]._id.toString(), {
       status: StateStatus.completed,
     });
 
-    // await startAITools(payload.payload.id);
+    await startAITools(id);
   }
 }

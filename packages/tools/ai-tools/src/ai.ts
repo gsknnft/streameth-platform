@@ -7,7 +7,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 export async function createTranscription(
   filePath: string,
   resultPath: string,
-  fileName: string
+  fileName: string,
 ): Promise<void> {
   if (!fs.existsSync(filePath)) {
     console.log("File does not exist");
@@ -41,7 +41,7 @@ export async function createTranscription(
 export async function createSummary(
   transcriptedFilePath: string,
   textFilePath: string,
-  fileName: string
+  fileName: string,
 ): Promise<string> {
   if (!fs.existsSync(textFilePath)) {
     fs.mkdirSync(textFilePath, { recursive: true });
@@ -86,7 +86,7 @@ export async function createSummary(
 }
 
 export async function createLabels(
-  transcriptedFilePath: string
+  transcriptedFilePath: string,
 ): Promise<string[]> {
   if (!fs.existsSync(transcriptedFilePath)) {
     throw new Error("File does not exist");
@@ -95,7 +95,7 @@ export async function createLabels(
   const input_text = fs.readFileSync(transcriptedFilePath);
 
   const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo-1106",
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
