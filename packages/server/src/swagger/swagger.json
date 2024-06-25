@@ -5213,6 +5213,28 @@
 				}
 			}
 		},
+		"/transcripe": {
+			"get": {
+				"operationId": "Transcripe",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IStandardResponse_string_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Index"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
 		"/webhook": {
 			"post": {
 				"operationId": "Webhook",

@@ -49,6 +49,27 @@ export class IndexController extends Controller {
     );
     return SendApiResponse('image uploaded', image);
   }
+
+  @Get('/transcripe')
+  async transcripe(): Promise<IStandardResponse<string>> {
+    try {
+      const sessions = (await this.sessionService.getAll({} as any)).sessions;
+
+      for (const session of sessions) {
+        if (session.assetId) {
+          await startAITools(session.assetId).catch((err) => {
+            console.log(err);
+          });
+        }
+      }
+
+      return SendApiResponse('OK');
+    } catch (err) {
+      console.log(err);
+      return SendApiResponse(err.toString(), null, '500');
+    }
+  }
+
   @Post('/webhook')
   async webhook(
     @Header('livepeer-signature') livepeerSignature: string,

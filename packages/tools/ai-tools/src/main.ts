@@ -25,11 +25,11 @@ async function getFileSize(filePath: string): Promise<number> {
 async function startAITools(
   assetId: string,
   overwriteFiles = false,
-  keepTmp = false
+  keepTmp = false,
 ) {
   if (!process.env.BUCKET_NAME) {
     throw new Error(
-      `BUCKET_NAME does not exist. What NODE_ENV are you running? NODE_ENV: ${process.env.NODE_ENV}`
+      `BUCKET_NAME does not exist. What NODE_ENV are you running? NODE_ENV: ${process.env.NODE_ENV}`,
     );
   }
 
@@ -55,7 +55,7 @@ async function startAITools(
   const mp3FilePath = join(TMP_MP3_PATH, `${sessionId}.mp3`);
   const transcriptionFilePath = join(
     TMP_TRANSCRIPTIONS_PATH,
-    `${sessionId}.txt`
+    `${sessionId}.txt`,
   );
   const digitalOceanPath = join(TRANSCRIPTIONS_PATH, `${sessionId}.txt`);
 
@@ -76,7 +76,7 @@ async function startAITools(
   await createTranscription(
     mp3FilePath,
     TMP_TRANSCRIPTIONS_PATH,
-    `${sessionId}.txt`
+    `${sessionId}.txt`,
   );
 
   if (!fs.existsSync(transcriptionFilePath)) {
@@ -88,14 +88,14 @@ async function startAITools(
     process.env.BUCKET_NAME,
     digitalOceanPath,
     fileStream,
-    "text/plain"
+    "text/plain",
   );
 
   const labels = await createLabels(transcriptionFilePath);
   const summary = await createSummary(
     transcriptionFilePath,
     TMP_SUMMARY_PATH,
-    `summary-${sessionId}.txt`
+    `summary-${sessionId}.txt`,
   );
 
   await sessionService.update(sessionId, {
@@ -109,8 +109,8 @@ async function startAITools(
   }
 }
 
-// startAITools("7a79da4e-19d4-44e1-9600-e4f927c47af9", true)
-//   .then(() => console.log("Ran successfully..."))
-//   .catch((err) => console.error("Error:", err));
+//startAITools("7a79da4e-19d4-44e1-9600-e4f927c47af9", true)
+//  .then(() => console.log("Ran successfully..."))
+//  .catch((err) => console.error("Error:", err));
 
 export default startAITools;
