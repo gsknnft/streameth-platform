@@ -24,7 +24,7 @@ export default async function VideoGrid({
       <div
         className={`${
           scroll ? 'flex flex-row' : 'grid grid-cols-2'
-        }  lg:grid md:grid-cols-3 lg:grid-cols-3 gap-8 gap-x-4`}>
+        }  lg:grid md:grid-cols-4 lg:grid-cols-4 gap-8 gap-x-4`}>
         {videos.map((video, index) =>
           ({ maxVideos }) && maxVideos && index > maxVideos ? null : (
             <div

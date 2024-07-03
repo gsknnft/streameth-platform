@@ -8,6 +8,10 @@ let nextConfig = {
       has: [
         {
           type: 'host',
+          value: 'localhost:3000',
+        },
+        {
+          type: 'host',
           value: 'streameth.org',
         },
         {

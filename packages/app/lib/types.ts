@@ -57,6 +57,15 @@ export interface SearchPageProps {
   }
 }
 
+export interface HomePageProps {
+  searchParams: {
+    organization?: IOrganization['slug']
+    event?: string
+    searchQuery?: string
+    page?: number
+  }
+}
+
 export interface OrganizationPageProps {
   params: {
     organization: string
