@@ -33,11 +33,25 @@ import CopyText from '@/components/misc/CopyText'
 export const ShareModalContent = ({
   url,
   shareFor = 'event',
+  speakerNames,
+  talkTitle,
+  organizationName
 }: {
   url?: string
   shareFor?: string
+  speakerNames?: string[]
+  talkTitle?: string
+  organizationName?: string
 }) => {
-  const text = `Check out this ${shareFor} on @streameth!`
+  const text = `A session recording of ${organizationName} is now available!
+
+  ${speakerNames && speakerNames.length > 0 
+    ? `Don't miss ${speakerNames.join(', ')}'s talk on "${talkTitle}" 👇`
+    : `Check out the talk on "${talkTitle}" 👇`
+  }
+  
+  `;
+
   const [currentUrl, setCurrentUrl] = useState(url ?? '')
   useEffect(() => {
     // This code will only run on the client side
@@ -91,12 +105,18 @@ const ShareButton = ({
   variant = 'outline',
   shareFor,
   title = 'Share',
+  speakerNames,
+  talkTitle,
+  organizationName
 }: {
   url?: string
   className?: string
   variant?: 'outline' | 'ghost' | 'primary' | 'default'
   shareFor?: string
   title?: string
+  speakerNames?: string[]
+  talkTitle?: string
+  organizationName?: string
 }) => {
   const buttonClassNames = buttonVariants({
     variant,
@@ -111,7 +131,7 @@ const ShareButton = ({
           {title}
         </span>
       </CredenzaTrigger>
-      <ShareModalContent url={url} shareFor={shareFor} />
+      <ShareModalContent url={url} shareFor={shareFor} speakerNames={speakerNames} talkTitle={talkTitle} organizationName={organizationName} />
     </Credenza>
   )
 }

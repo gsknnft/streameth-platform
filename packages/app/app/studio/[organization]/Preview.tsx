@@ -12,19 +12,27 @@ import { deleteSessionAction } from '@/lib/actions/sessions'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
 import { Asset } from 'livepeer/dist/models/components'
+
 const Preview = ({
   initialIsOpen,
   asset,
   organizationId,
   sessionId,
   organizationSlug,
+  talkTitle,
+  organizationName,
+  speakerNames
 }: {
   initialIsOpen: boolean
   asset: Asset
   organizationId: string
   sessionId: string
   organizationSlug: string
+  talkTitle?: string
+  organizationName: string
+  speakerNames?: any[]
 }) => {
+  console.log('names', speakerNames)
   const [isOpen, setIsOpen] = useState(false)
   const { handleTermChange } = useSearchParams()
   const { status, playbackUrl, playbackId } = asset
@@ -64,6 +72,7 @@ const Preview = ({
       })
   }
 
+
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="w-full max-w-4xl bg-transparent text-white">
@@ -102,6 +111,9 @@ const Preview = ({
             <ShareButton
               url={`${location.origin}/${organizationSlug}/watch?session=${sessionId}`}
               shareFor="video"
+              talkTitle={talkTitle}
+              organizationName={organizationName}
+              speakerNames={speakerNames}
             />
           </DialogFooter>
         </div>

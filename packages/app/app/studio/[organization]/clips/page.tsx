@@ -228,9 +228,10 @@ const EventClips = async ({
         session: previewId,
       })
       if (session) {
-        return await fetchAsset({
+        const asset = await fetchAsset({
           assetId: session.assetId as string,
         })
+        return {...session, asset}
       }
     }
     return undefined
@@ -242,9 +243,12 @@ const EventClips = async ({
         <Preview
           initialIsOpen={previewId !== ''}
           organizationId={organization._id as string}
-          asset={previewAsset}
+          asset={previewAsset.asset}
           sessionId={previewId}
           organizationSlug={params.organization}
+          organizationName={organization.name}
+          talkTitle={previewAsset.name}
+          speakerNames={previewAsset.speakers?.map(s => s.name)}
         />
       )}
       <div className="flex w-full flex-col">
